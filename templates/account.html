@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+
+<!-- Checkout Page Start -->
+        <div class="container-fluid py-5">
+            <div class="container py-5">
+                <h1 class="mb-4">You</h1>
+                <form action="#">
+                    <div class="row g-5">
+                        <div class="col-md-12 col-lg-6 col-xl-7">
+                            <div class="row">
+                                <div class="col-md-12 col-lg-6">
+                                    <div class="form-item w-100">
+                                          <h1>Your Date</h1>
+                                        <label class="form-label my-3">First Name <sup>*</sup></label>
+                                       <li class="list-group-item">{{request.user.first_name}}</li>
+                                    </div>
+                                </div>
+                            <div class="form-item">
+                                <label class="form-label my-3">Last Name<sup>*</sup></label>
+                               <li class="list-group-item">{{request.user.last_name}}</li>
+                            </div>
+                            <div class="form-item">
+                                <label class="form-label my-3">Username<sup>*</sup></label>
+                               <li class="list-group-item">{{request.user.username}}</li>
+                            </div>
+                            <div class="form-item">
+                                <label class="form-label my-3">Email<sup>*</sup></label>
+                                <li class="list-group-item"> {{request.user.email}}</li>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+{% endblock %}
