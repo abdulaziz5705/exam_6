@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from .models import Fruit, Vegetables, Meat, Bread
+from .forms import FruitForm, VegetableForm, MeatForm, BreadForm
 
 
 def shop_detail(request, name):
@@ -38,3 +39,15 @@ def delete_fr(request, name):
             bread.delete()
             return redirect('shop')
 
+
+def fruit_create(request):
+    if request.method == "POST":
+        form = FruitForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('shop')
+        else:
+            return render(request, 'fruit_creat.html    ', {'form': form}, {'message': "Error!!!"})
+
+    form = FruitForm()
+    return render(request, 'fruit_creat.html', {'form': form})

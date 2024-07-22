@@ -13,7 +13,7 @@ class Fruit(models.Model):
     description = models.TextField()
     turi = models.ForeignKey(Turi, on_delete=models.CASCADE)
     price = models.FloatField()
-    image = models.ImageField()
+    image = models.ImageField(upload_to='fruit/')
     foydalari = models.CharField(max_length=200)
 
     def __str__(self):

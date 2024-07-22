@@ -69,9 +69,12 @@
                                         <p>{{product.description}}  </p>
                                         <p>Sabertooth peacock flounder; chain pickerel hatchetfish, pencilfish snailfish filefish Antarctic 
                                             icefish goldeye aholehole trumpetfish pilot fish airbreathing catfish, electric ray sweeper.</p>
-                                           </div>
-                                            <a href="{% url 'delete' product.name %}" class="btn border border-secondary text-primary rounded-pill px-4 py-3">Delete</a>
-                                        </div>
+                                            </div>
+                                                {% if request.user.is_superuser %}
+                                                    <a href="{% url 'delete' product.name %}" class="btn border border-secondary text-primary rounded-pill px-4 py-3">Delete</a>  |   <a href="{% url 'fruit-create' %}" class="btn border border-secondary text-primary rounded-pill px-4 py-3">Fruit Create</a>
+
+                                                {% endif%}
+                                            </div>
                                         <div class="px-2">
                                             <div class="row g-4">
                                                 <div class="col-6">
@@ -188,6 +191,7 @@
                                             <div class="d-flex align-items-center">
                                                 </div>
                                     </div>
+                                </div>
                                 </div>
                             </form>
                         </div>
