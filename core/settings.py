@@ -3,6 +3,12 @@ from dotenv import load_dotenv
 from pathlib import Path
 load_dotenv()
 
+from pyngrok import conf
+
+
+conf.get_default().auth_token = "34BIUc1nUuO4yb9mdwFZlzj2G2V_3gcozUAEKBegTPSixemCi"
+
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -17,7 +23,23 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+
+# ALLOWED_HOSTS = ["127.0.0.1", "localhost", "192.168.238.1", "172.21.72.146"]
+
+ALLOWED_HOSTS = [
+    '127.0.0.1',
+    'localhost',
+    'demetrius-unadulating-bayleigh.ngrok-free.dev',
+    '.ngrok-free.dev',
+]
+
+CSRF_TRUSTED_ORIGINS = [
+    'https://demetrius-unadulating-bayleigh.ngrok-free.dev',
+    'https://*.ngrok-free.dev',
+]
+
+
+
 
 
 # Application definition

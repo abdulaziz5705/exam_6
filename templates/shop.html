@@ -185,36 +185,35 @@
                             </div>
                             <div class="col-lg-9">
                                 <div class="row g-4 justify-content-center">
-                                    {% for fruits in fruit %}
-                                    <div class="col-md-6 col-lg-6 col-xl-4">
-                                        <div class="rounded position-relative fruite-item">
+                                        {% for fruits in fruit %}
+                                        <div class="col-md-6 col-lg-6 col-xl-4">
+                                            <div class="rounded position-relative fruite-item">
                                                     <div class="fruite-img">
-                                                        <img src="{{fruits.image.url}}" class="img-fluid w-100 rounded-top" alt="">
+                                                        <img src="#" class="img-fluid w-100 rounded-top" alt="">
                                                     </div>
                                                     <div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 10px; left: 10px;">Fruits</div>
                                                     <div class="p-4 border border-secondary border-top-0 rounded-bottom">
-                                                        <h4>{{fruits.name}}</h4>
+                                                        <a href="{% url 'shop-detail' fruits.name %}"><h4>{{fruits.name}}</h4></a>++
                                                         <div class="d-flex justify-content-between flex-lg-wrap">
                                                             <p class="text-dark fs-5 fw-bold mb-0">${{fruits.price}} / kg</p>
                                                             <a href="{% url 'shop-detail' fruits.name %}" class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart</a>
                                                         </div>
                                                     </div>
                                                 </div>
-                                        </div>
-                                         {% endfor %}
+                                            </div>
+                                             {% endfor %}
                                     </div>
                                     <div class="col-lg-9">
                                         <div class="row g-4 justify-content-center">
                                             {% for veg in vegetable %}
                                             <div class="col-md-6 col-lg-6 col-xl-4">
                                                 <div class="rounded position-relative fruite-item">
-
                                                             <div class="fruite-img">
-                                                                <img src="{{veg.image.url}}" class="img-fluid w-100 rounded-top" alt="">
+                                                                <img src="" class="img-fluid w-100 rounded-top" alt="">
                                                             </div>
                                                             <div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 10px; left: 10px;">Fruits</div>
                                                             <div class="p-4 border border-secondary border-top-0 rounded-bottom">
-                                                                <h4>{{veg.name}}</h4>
+                                                                <a href="{% url 'shop-detail' veg.name %}"><h4>{{veg.name}}</h4></a>
                                                                 <div class="d-flex justify-content-between flex-lg-wrap">
                                                                     <p class="text-dark fs-5 fw-bold mb-0">${{veg.price}} / kg</p>
                                                                     <a href="{% url 'shop-detail' veg.name %}" class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart</a>
@@ -232,11 +231,11 @@
                                                 <div class="rounded position-relative fruite-item">
 
                                                             <div class="fruite-img">
-                                                                <img src="{{m.image.url}}" class="img-fluid w-100 rounded-top" alt="">
+                                                                <img src="" class="img-fluid w-100 rounded-top" alt="">
                                                             </div>
                                                             <div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 10px; left: 10px;">Fruits</div>
                                                             <div class="p-4 border border-secondary border-top-0 rounded-bottom">
-                                                                <h4>{{m.name}}</h4>
+                                                                <a href="{% url 'shop-detail' m.name %}"><h4>{{m.name}}</h4></a>
                                                                 <div class="d-flex justify-content-between flex-lg-wrap">
                                                                     <p class="text-dark fs-5 fw-bold mb-0">${{m.price}} / kg</p>
                                                                     <a href="{% url 'shop-detail' m.name %}" class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart</a>
@@ -254,11 +253,11 @@
                                                 <div class="rounded position-relative fruite-item">
 
                                                             <div class="fruite-img">
-                                                                <img src="{{br.image.url}}" class="img-fluid w-100 rounded-top" alt="">
+                                                                <img src="" class="img-fluid w-100 rounded-top" alt="">
                                                             </div>
                                                             <div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 10px; left: 10px;">Fruits</div>
                                                             <div class="p-4 border border-secondary border-top-0 rounded-bottom">
-                                                                <h4>{{br.name}}</h4>
+                                                                <a href="{% url 'shop-detail' br.name %}"><h4>{{br.name}}</h4></a>
                                                                 <div class="d-flex justify-content-between flex-lg-wrap">
                                                                     <p class="text-dark fs-5 fw-bold mb-0">${{br.price}} / kg</p>
                                                                     <a href="{% url 'shop-detail' br.name %}" class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart</a>
@@ -269,6 +268,10 @@
                                              {% endfor %}
                                         </div>
                                     </div>
+{% if request.user.is_superuser %}
+    <a href="{% url 'fruit-create' %}" class="btn border border-secondary text-primary rounded-pill px-4 py-3">Fruit Create</a> | <a href="{% url 'veg-create' %}" class="btn border border-secondary text-primary rounded-pill px-4 py-3">Vegetable Create</a> | <a href="{% url 'meat-create' %}" class="btn border border-secondary text-primary rounded-pill px-4 py-3">Meat Create</a> | <a href="{% url 'bread-create' %}" class="btn border border-secondary text-primary rounded-pill px-4 py-3">Bread Create</a>
+{% endif %}
+
 
                                     <div class="col-12">
                                         <div class="pagination d-flex justify-content-center mt-5">

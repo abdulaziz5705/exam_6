@@ -28,7 +28,7 @@ def regester_view(request):
         if password != password1:
             return render(request, 'regester.html', context={"message_password": "Error Password!!!"})
         elif User.objects.filter(username=username).exists():
-                return render(request, 'regester.html', context={"message": "Bunday usernamelik foydalanuvchi mavjud!!"})
+            return render(request, 'regester.html', context={"message": "Bunday usernamelik foydalanuvchi mavjud!!"})
         else:
             if first_name and last_name and username and password and password1:
 
@@ -37,7 +37,7 @@ def regester_view(request):
                 new_user.save()
                 return redirect('login')
             else:
-                return render(request, 'regester.html',{'message_com': "Error have empty place!!!"})
+                return render(request, 'regester.html', {'message_com': "Error have empty place!!!"})
 
     return render(request, 'regester.html')
 

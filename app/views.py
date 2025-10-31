@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from product.models import Fruit, Vegetables, Meat, Bread
+from django.contrib.auth.decorators import login_required
 
 
 def index_view(request):

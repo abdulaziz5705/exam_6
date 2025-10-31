@@ -3,6 +3,7 @@ from .models import Fruit, Vegetables, Meat, Bread
 from .forms import FruitForm, VegetableForm, MeatForm, BreadForm
 
 
+
 def shop_detail(request, name):
     if Vegetables.objects.filter(name=name):
         vegetable = Vegetables.objects.get(name=name)
@@ -51,3 +52,45 @@ def fruit_create(request):
 
     form = FruitForm()
     return render(request, 'fruit_creat.html', {'form': form})
+
+
+def veg_create(request):
+    if request.method == "POST":
+        form = VegetableForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('shop')
+        else:
+            return render(request, 'veg_create.html    ', {'form': form}, {'message': "Error!!!"})
+
+    form = VegetableForm()
+    return render(request, 'veg_create.html', {'form': form})
+
+
+def meat_create(request):
+    if request.method == "POST":
+        form = MeatForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('shop')
+        else:
+            return render(request, 'meat_create.html    ', {'form': form}, {'message': "Error!!!"})
+
+    form = MeatForm()
+    return render(request, 'meat_create.html', {'form': form})
+
+
+def bread_create(request):
+    if request.method == "POST":
+        form = BreadForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('shop')
+        else:
+            return render(request, 'bread_create.html    ', {'form': form}, {'message': "Error!!!"})
+
+    form = BreadForm()
+    return render(request, 'bread_create.html', {'form': form})
+
+
+
